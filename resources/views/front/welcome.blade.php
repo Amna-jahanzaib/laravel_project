@@ -12,21 +12,21 @@
         </ol>
         <div class="carousel-inner" role="listbox">
             <!-- Slide One - Set the background image for this slide in the line below -->
-            <div class="carousel-item active" style="background-image: url('{{asset('dist/img/bg2.jpg')}}')">
+            <div class="carousel-item active" style="background-image: url('{{asset('img/bg2.jpg')}}')">
                 <div class="carousel-caption d-none d-md-block">
                     <h2 class="display-4">Find and Book a Speech Therapist </h2>
                     <p class="lead">Appointment right now </p>
                 </div>
             </div>
             <!-- Slide Two - Set the background image for this slide in the line below -->
-            <div class="carousel-item" style="background-image: url('{{asset('dist/img/bg1.jpg')}}')">
+            <div class="carousel-item" style="background-image: url('{{asset('img/bg1.jpg')}}')">
                 <div class="carousel-caption d-none d-md-block">
                     <h2 class="display-4">Find and Book a Speech Therapist </h2>
                     <p class="lead">Appointment right now </p>
                 </div>
             </div>
             <!-- Slide Three - Set the background image for this slide in the line below -->
-            <div class="carousel-item" style="background-image: url('{{asset('dist/img/bg3.jpeg')}}')">
+            <div class="carousel-item" style="background-image: url('{{asset('img/bg3.jpeg')}}')">
                 <div class="carousel-caption d-none d-md-block">
                     <h2 class="display-4">Find and Book a Speech Therapist </h2>
                     <p class="lead">Book Appointment </p>
@@ -115,7 +115,7 @@
                 </div>
             </div>
             <div class="col-md-6 col-sm-12" style="padding-right:15px; ">
-                <img src="{{asset('dist/img/blog1.png')}}" class="img-responsive" alt="about img">
+                <img src="{{asset('img/blog1.png')}}" class="img-responsive" alt="about img">
             </div>
             <div class="col-md-6 col-sm-12">
                 <h3 class="bold">Fresh Environment</h3>
@@ -166,14 +166,14 @@
             <div class="card-columns">
 
                 <div class="card shadow border-0">
-                    <img class="card-img-top" src="{{asset('dist/img/blogg1.jpg')}}" alt="Card image cap" style="width:400px;height:225px;">
+                    <img class="card-img-top" src="{{asset('img/blogg1.jpg')}}" alt="Card image cap" style="width:400px;height:225px;">
                     <div class="card-body"><b>Speech Related Products</b></h5>
                         <p class="card-text">AbleNet Augmentative and Alternative Communication (AAC) products from AbleNet allow persons with disabilities the chance to engage with others and connect with their world.
                         <p class="card-text"><small class="text-muted">Last updated 15 mins ago</small></p>
                     </div>
                 </div>
                 <div class="card shadow border-0">
-                    <img class="card-img-top" src="{{asset('dist/img/blogg2.jpg')}}" alt="Card image cap" style="width:400px;height:225px;">
+                    <img class="card-img-top" src="{{asset('img/blogg2.jpg')}}" alt="Card image cap" style="width:400px;height:225px;">
                     <div class="card-body">
                         <h5 class="card-title"><b>Child Talk</b></h5>
                         <p class="card-text">I’ve written a lot about the power of talking to your toddler.  I’ve shared how techniques such as parallel talk & extension can be used to help your child’s language grow. I’ve discussed how indirect language facilitation has been proven to be an effective means of language intervention for toddlers .</p>
@@ -181,7 +181,7 @@
                     </div>
                 </div>
                 <div class="card shadow border-0">
-                    <img class="card-img-top" src="{{asset('dist/img/blogg3.jpg')}}" alt="Card image cap" style="width:400px;height:225px;">
+                    <img class="card-img-top" src="{{asset('img/blogg3.jpg')}}" alt="Card image cap" style="width:400px;height:225px;">
                     <div class="card-body">
                         <h5 class="card-title"><b>Telegraphic speech</b></h5>
                         <p class="card-text">Telegraphic speech occurs when we speak like we would in, well, a telegraph.  In other words, we omit the “small” words that make a sentence grammatically correct and include only the important words - mainly nouns and verbs.</p>
@@ -209,7 +209,7 @@
         <div class="col-xl-4 col-md-6 mb-4">
             <div class="card border-0 shadow">
                 <!--<img src="https://source.unsplash.com/TMgQMXoglsM/500x350" class="card-img-top" alt="...">-->
-                <img src="dist/img/waqar.jpg" class="card-img-top" alt="User Image">
+                <img src="img/waqar.jpg" class="card-img-top" alt="User Image">
                 <div class="card-body text-center">
                     <h5 class="card-title mb-0">Mirza Waqar</h5>
                     <div class="card-text text-black-50">CEO,Founder,Director</div>
@@ -229,7 +229,7 @@
         <!-- Team Member 3 -->
         <div class="col-xl-4 col-md-6 mb-4">
             <div class="card border-0 shadow">
-            <img src="dist/img/tayyab2.jpg" class="card-img-top" alt="User Image">
+            <img src="img/tayyab2.jpg" class="card-img-top" alt="User Image">
                 <div class="card-body text-center">
                     <h5 class="card-title mb-0" >Tayyab Hussain</h5>
                     <div class="card-text text-black-50">CEO,Founder,Director</div>
@@ -239,7 +239,7 @@
         <!-- Team Member 4 -->
         <div class="col-xl-4 col-md-6 mb-4">
             <div class="card border-0 shadow">
-            <img src="dist/img/faizan.jpg" class="card-img-top" alt="User Image">
+            <img src="img/faizan.jpg" class="card-img-top" alt="User Image">
                 <div class="card-body text-center">
                     <h5 class="card-title mb-0">Faizan Khan</h5>
                     <div class="card-text text-black-50">CEO,Founder,Director</div>
@@ -273,7 +273,7 @@
                 <!-- Wrapper for carousel items -->
                 <div class="carousel-inner">
                     <div class="item carousel-item active">
-                        <div class="img-box"><img src="dist/img/2.jpg" alt=""></div>
+                        <div class="img-box"><img src="img/2.jpg" alt=""></div>
                         <p class="testimonial">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem
                             tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper
                             malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius nibh non
@@ -291,7 +291,7 @@
 
                     </div>
                     <div class="item carousel-item">
-                        <div class="img-box"><img src="dist/img/doctor1.jpg" alt=""></div>
+                        <div class="img-box"><img src="img/2.jpg" alt=""></div>
                         <p class="testimonial">Vestibulum quis quam ut magna consequat faucibus. Pellentesque eget nisi
                             a mi suscipit tincidunt. Utmtc tempus dictum risus. Pellentesque viverra sagittis quam at
                             mattis. Suspendisse potenti. Aliquam sit amet gravida nibh, facilisis gravida odio.</p>
@@ -307,7 +307,7 @@
                         </div>
                     </div>
                     <div class="item carousel-item">
-                        <div class="img-box"><img src="dist/img/doctor2.jpg" alt=""></div>
+                        <div class="img-box"><img src="img/2.jpg" alt=""></div>
                         <p class="testimonial">Phasellus vitae suscipit justo. Mauris pharetra feugiat ante id lacinia.
                             Etiam faucibus mauris id tempor egestas. Duis luctus turpis at accumsan tincidunt.
                             Phasellus risus risus, volutpat vel tellus ac, tincidunt fringilla massa. Etiam hendrerit
