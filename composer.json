@@ -20,8 +20,7 @@
         "nesbot/carbon": "^2.32",
         "spatie/laravel-medialibrary": "^7.0",
         "stripe/stripe-php": "^7.31",
-        "yajra/laravel-datatables-oracle": "^9.6",
-        "ybr-nx/laravel-mariadb": "^1.0"
+        "yajra/laravel-datatables-oracle": "^9.6"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
