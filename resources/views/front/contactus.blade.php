@@ -70,7 +70,7 @@
 				</div>
 			</form>
 
-			<div class="contact100-more flex-col-c-m" style="background-image: url('{{asset('dist/img/bg-01.jpg')}}');">
+			<div class="contact100-more flex-col-c-m" style="background-image: url('{{asset('img/bg-01.jpg')}}');">
 				<div class="flex-w size1 p-b-47">
 					<div class="txt1 p-r-25">
 						<span class="lnr lnr-map-marker"></span>
