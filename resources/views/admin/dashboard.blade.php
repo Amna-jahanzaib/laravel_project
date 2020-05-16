@@ -141,9 +141,9 @@
                       <td>{{$doctor->user->email}}</td>
                       <td>
                       @foreach($doctor->documents as $key => $media)
-                                    <a href="{{ $media->getUrl() }}" target="_blank">
-                                        {{ trans('global.view_file') }}
-                                    </a>
+                        <a href="{{ $media->getUrl() }}" target="_blank">
+                        <i class="far fa-file-pdf "></i> View file
+                       </a>
                         @endforeach
                       </td>
                       <td>
