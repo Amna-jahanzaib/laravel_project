@@ -71,7 +71,7 @@ class UsersController extends Controller
 
         if ($request->input('photo', false)) {
             if (!$user->photo || $request->input('photo') !== $user->photo->file_name) {
-                $user->addMedia(storage_path('tmp/uploads/' . $request->input('photo')))->toMediaCollection('photo');
+                $user->addMedia(public_path( $request->input('photo')))->toMediaCollection('photo');
             }
 
         } elseif ($user->photo) {
