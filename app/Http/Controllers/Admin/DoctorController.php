@@ -54,8 +54,11 @@ class DoctorController extends Controller
     {
         $doctor=Doctor::where('id',$id)->first();
         $doctor->is_registered=1;
+        $name = $doctor->first_name;
+        Mail::to($doctor->user->email)->send(new AcceptDoctorNotification($name));
         $doctor->save();
-        Mail::to($doctor->user->email)->send(new AcceptDoctorNotification($doctor->first_name));
+
+        //Mail::to($doctor->user->email)->send(new AcceptDoctorNotification($doctor->first_name));
 
         return redirect()->route('admin.doctors.join_requests');
     }
@@ -65,9 +68,13 @@ class DoctorController extends Controller
         $doctor=Doctor::where('id',$id)->first();
         $id=$doctor->user->id;
         Mail::to($doctor->user->email)->send(new RejectDoctorNotification($doctor->first_name));
+        foreach($doctor->documents as $key => $media){
+         $media->forceDelete();
+    }
 
         $doctor->delete();
         $data = User::findOrFail($id);
+        $data->photo->delete();
         $data->delete();
 
 
@@ -163,9 +170,13 @@ class DoctorController extends Controller
     {
         abort_if(Gate::denies('doctor_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $id=$doctor->user->id;
-
+        foreach($doctor->documents as $key => $media){
+            $media->forceDelete();
+       }
+   
         $doctor->delete();
         $data = User::findOrFail($id);
+        $data->photo->delete();
         $data->delete();
         return back();
 

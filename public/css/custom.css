@@ -2,6 +2,7 @@
 textarea {
     min-height: 150px;
 }
+ 
 
 .datatable {
     width: 100% !important;
@@ -137,3 +138,22 @@ margin-left:75px;
 .products-list .product-description {  color: #6c757d;  display: block;  overflow: hidden;  text-overflow: ellipsis;  white-space: nowrap;}
 .product-list-in-card > .item {  border-radius: 0;  border-bottom: 1px solid rgba(0, 0, 0, 0.125);}
 .product-list-in-card > .item:last-of-type {  border-bottom-width: 0;}
+.hide{
+display: none!important;
+
+}
+    .panel-title {
+    display: inline;
+    font-weight: bold;
+    }
+    .display-table {
+        display: table;
+    }
+    .display-tr {
+        display: table-row;
+    }
+    .display-td {
+        display: table-cell;
+        vertical-align: middle;
+        width: 61%;
+    }

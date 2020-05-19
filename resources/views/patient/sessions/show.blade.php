@@ -122,7 +122,7 @@
 
                 <button type="button" onclick="location.reload();location.href=''" class="btn  btn-info">Create Record</button>
                   @endif
-                <button type="button" class="btn btn-success float-right" onclick="location.reload();location.href='{{route('patient.sessions.requests')}}'">
+                <button type="button" class="btn btn-success float-right" onclick="location.reload();location.href='{{url()->previous()}}'">
                     Back
 
                   </button>

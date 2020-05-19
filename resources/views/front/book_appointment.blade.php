@@ -11,15 +11,15 @@
 
                 <div class="card-body">
 
-               @if (\Session::has('message'))
-                    <div class="alert alert-success">
+                @if (\Session::has('error'))
+                    <div class="alert alert-danger">
         
-                      <li>{!! \Session::get('message') !!}</li>
+                      <span>{!! \Session::get('error') !!}</span>
         
                     </div>
                 @endif
 <!-- Form  -->
-                <form method="POST" action="{{ route("admin.appointments.store") }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route("patient.appointments.store") }}" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-sm-6">

@@ -37,13 +37,8 @@ class StoreTreatmentRecordRequest extends FormRequest
                 'required'],
             'improvements'  => [
                 'required'],
-            'next_session_date'           => [
-                'required',
-                'date_format:' . config('panel.date_format') ],
-            'next_session_time'=> [
-                'required',
-                'date_format:' . config('panel.time_format')],
 
+                
         ];
 
     }

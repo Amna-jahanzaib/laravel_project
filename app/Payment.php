@@ -47,9 +47,9 @@ class Payment extends Model
 
     }
 
-    public function appointment()
+    public function session()
     {
-        return $this->belongsTo(Appointment::class, 'appointment_id');
+        return $this->belongsTo(Session::class, 'appointment_id');
 
     }
 }

@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 /*******************User Routes*************************/
+Auth::routes(['register' => false]);
 
-Auth::routes();
 
 Route::get('/', function () {
       return view('front.welcome');})->name('home');
@@ -55,7 +55,8 @@ Route::get('/', function () {
     ]);
     Route::post('/make-payment', 'PaymentsController@pay');
     Route::get('payment/{session}', 'StripePaymentController@stripe2')->name('payment');
-    Route::get('stripe1', 'StripePaymentController@stripe1');
+    Route::get('payout', 'StripePaymentController@index')->name('withdraw');
+    Route::get('refund/{session}', 'StripePaymentController@refund')->name('refund');
     Route::post('stripe/{session}', 'StripePaymentController@stripePost')->name('stripe.post');
     Route::post('/doctors/search', 'FrontController@search')->name("search");
 
@@ -70,7 +71,6 @@ Route::get('/', function () {
     Route::resource('sessions', 'Admin\SessionsController');
 
 /*******************Admin Routes*************************/
-Auth::routes();
 
 Route::name('admin.')->group(function () {
     Route::get('/home', 'Admin\HomeController@index')->name('dashboard');

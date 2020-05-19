@@ -46,7 +46,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($sessions as $key => $session)
+                    @foreach($sessions->unique('sessionTreatments->exercise_id') as $key => $session)
                     @if(!empty($session->sessionTreatments))
                         <tr >
                             <td>

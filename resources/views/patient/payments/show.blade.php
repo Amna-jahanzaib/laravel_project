@@ -54,10 +54,7 @@
                             {{ trans('cruds.payment.fields.doctor') }}
                         </th>
                         <th class="border-0 text-uppercase small font-weight-bold">
-                            {{ trans('cruds.payment.fields.appointment') }}
-                        </th>
-                        <th class="border-0 text-uppercase small font-weight-bold">
-                            Session
+                            Session ID
                         </th>
                         <th class="border-0 text-uppercase small font-weight-bold">
                             {{ trans('cruds.payment.fields.type') }}
@@ -77,9 +74,8 @@
                                          {{ $payment->doctor->first_name ?? '' }}
                                         </td>
                                         <td>
-                                        {{ $payment->appointment->id ?? '' }}
+                                        {{ $payment->session_id ?? '' }}
                                         </td>
-                                        <td>{{ $payment->session->id ?? '' }}</td>
                                         <td>
                                         {{ $payment->type ?? '' }}
                                         </td>

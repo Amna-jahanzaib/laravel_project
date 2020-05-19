@@ -1,5 +1,21 @@
 @extends('layouts.admin')
 @section('content')
+<section class="content-header">
+      <div class="container">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Payments</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{{route('patient.dashboard')}}">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Payments</a></li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
 <div class="card">
     <div class="card-header">
         {{ trans('cruds.payment.title_singular') }} {{ trans('global.list') }}
@@ -14,7 +30,7 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.payment.fields.id') }}
+                            Session
                         </th>
                         <th>
                             {{ trans('cruds.payment.fields.doctor') }}
@@ -25,9 +41,7 @@
                         <th>
                             {{ trans('cruds.payment.fields.patient') }}
                         </th>
-                        <th>
-                            {{ trans('cruds.payment.fields.appointment') }}
-                        </th>
+                        
                         <th>
                             {{ trans('cruds.payment.fields.type') }}
                         </th>
@@ -49,7 +63,7 @@
 
                             </td>
                             <td>
-                                {{ $payment->id ?? '' }}
+                                {{ $payment->session_id ?? '' }}
                             </td>
                             <td>
                                 {{ $payment->doctor->first_name ?? '' }}
@@ -60,9 +74,7 @@
                             <td>
                                 {{ $payment->patient->name ?? '' }}
                             </td>
-                            <td>
-                                {{ $payment->appointment->appointment_desc ?? '' }}
-                            </td>
+                            
                             <td>
                                 {{ $payment->type ?? '' }}
                             </td>

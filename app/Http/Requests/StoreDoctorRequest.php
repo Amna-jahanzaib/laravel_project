@@ -64,13 +64,23 @@ class StoreDoctorRequest extends FormRequest
 
             'days'            => [
                 'required'],
-            'hospital_name'   => [
+                    'hospital_name'   => [
                 'required'],
-            'is_registered'   => [
-                'required',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647'],
+            'hospital_days'   => [
+                'required'], 
+            'hospital_address'   => [
+                'required'],
+            'hospital_start_timing'   => [
+                'required'],
+            'hospital_finish_timing'   => [
+                'required'],
+            'start_timing'   => [
+                'required'],
+            'finish_timing'   => [
+                'required'],
+                'documents.*'     => [
+                    'required'],
+
         ];
 
     }

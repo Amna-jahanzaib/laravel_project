@@ -165,7 +165,7 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer clearfix">
-                <a href="{{route('patient.appointments.requests')}}" class="btn btn-sm btn-primary float-right">View All Appointments</a>
+                <a href="{{route('patient.appointments.requests')}}" class="btn btn-sm btn-primary float-right">View All Appointment Requests</a>
               </div>
               <!-- /.card-footer -->
             </div>
@@ -207,7 +207,7 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer text-center">
-                <a href="{{route('patient.doctors.index')}}" class="uppercase">View All Patients</a>
+                <a href="{{route('patient.doctors.index')}}" class="uppercase">View All Doctors</a>
               </div>
               <!-- /.card-footer -->
             </div>

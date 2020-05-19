@@ -48,9 +48,59 @@ class AppointmentsController extends Controller
 
     public function store(StoreAppointmentRequest $request)
     {
-        $appointment = Appointment::create($request->all());
+        $now = Carbon::now('Asia/Karachi');
 
-        return redirect()->back()->with('message', 'Your registered Information has been successfully submitted! Please Verify through email');   
+        $curentTime = Carbon::now()->addHours(5);
+
+        if (Carbon::parse($request->input('start_date').$request->input('start_time'))->addHours(5)->isPast()){
+            return redirect()->back()->with('error', 'Your selected appointment time is invalid. Please select time in future');   
+
+        }
+        if(Carbon::parse($request->input('start_date').$request->input('start_time'))->isSameAs('Y-m-d h',$now)){
+            return redirect()->back()->with('error', 'Your selected appointment time is invalid. Please select time atleast 2-4 hours above the current time');   
+        }
+
+
+        $appointments=Appointment::where('patient_id',$request->input('patient_id'))->where('doctor_id',$request->input('doctor_id'))->where('status','<>','2')->get();
+        foreach($appointments as $appointment){   
+            if ($appointment->status==1  && $appointment->status==0 && $appointment->status==3 && $appointment->status==4)
+            {
+                return redirect()->back()->with('error', 'Your have already booked appointment with requested doctor which is not completed.Please respond to session request or wait for the doctor reply!');   
+            }
+            if (!$appointment->status==5)
+            {
+                return redirect()->back()->with('error', 'Your have already booked appointment with requested doctor which is not completed.Please respond to session request or wait for the doctor reply!');   
+            }
+
+            if (Carbon::parse($appointment->start_date.$appointment->start_time)->isSameAs('Y-m-d h', Carbon::parse($request->input('start_date').' '.$request->input('start_time'))))
+          //  Carbon::createFromFormat('Y-m-d',$appointment->start_date)==Carbon::createFromFormat('Y-m-d',))
+            {
+                return redirect()->back()->with('error', 'Your have already booked appointment on this date time!');   
+            }           
+    
+       }
+       $myappointments=Appointment::where('patient_id',$request->input('patient_id'))->where('status','<>','2')->get();
+       foreach($myappointments as $appointment){   
+           if (Carbon::parse($appointment->start_date.$appointment->start_time)->isSameAs('Y-m-d h', Carbon::parse($request->input('start_date').' '.$request->input('start_time'))))
+           {
+               return redirect()->back()->with('error', 'Your have already booked appointment on this date time!');   
+           } }          
+           $myappointments=Appointment::where('doctor_id',$request->input('doctor_id'))->where('status','<>','2')->get();
+           foreach($myappointments as $appointment){   
+               if (Carbon::parse($appointment->start_date.$appointment->start_time)->isSameAs('Y-m-d h', Carbon::parse($request->input('start_date').' '.$request->input('start_time'))))
+               {
+                   return redirect()->back()->with('error', 'Doctor has already booked appointment on this date time!');   
+               } }  
+
+        
+
+   $appointment = Appointment::create($request->all());
+
+
+
+    return redirect()->back()->with('message', 'Your appointment is booked sucessfully');   
+
+
 
     }
 

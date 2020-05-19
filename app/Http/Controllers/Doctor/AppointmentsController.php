@@ -14,6 +14,10 @@ use App\Session;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AppointmentApproveNotification;
+use App\Mail\AppointmentDediedNotification;
+use App\Mail\SessionNotification;
 use Carbon\Carbon;
 class AppointmentsController extends Controller
 {
@@ -41,10 +45,10 @@ class AppointmentsController extends Controller
     {
         abort_if(Gate::denies('appointment_accept'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $appointment = Appointment::findOrFail($id);
+        Mail::to($appointment->patient->user->email)->send(new AppointmentApproveNotification($appointment));
 
         $appointment->status = 1;
 
-        if($appointment->type==1){
             $session = new Session();
             $session->appointment_id=$appointment->id;
             $session->patient_id=$appointment->patient->id;
@@ -52,8 +56,8 @@ class AppointmentsController extends Controller
             $session->type=$appointment->type;
             $session->status=1;
             $session->time=$appointment->date_time.' '.$appointment->start_time;
-            $session->save();    
-        }
+            $session->save();
+            Mail::to($appointment->patient->user->email)->send(new SessionNotification($session));
 
 
         $appointment->save();
@@ -63,6 +67,7 @@ class AppointmentsController extends Controller
     public function reject($id)
     {
         $appointment = Appointment::findOrFail($id);
+        Mail::to($appointment->patient->user->email)->send(new AppointmentDediedNotification($appointment));
 
         $appointment->status = 2;
 

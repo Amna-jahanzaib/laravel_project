@@ -9,7 +9,9 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5",
+        "ext-gd": "*",
         "doctrine/dbal": "^2.5",
+        "dompdf/dompdf": "^0.8.5",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.5",
@@ -20,7 +22,6 @@
         "nesbot/carbon": "^2.32",
         "spatie/laravel-medialibrary": "^7.0",
         "stripe/stripe-php": "^7.31",
-        "ext-gd": "*",
         "yajra/laravel-datatables-oracle": "^9.6"
     },
     "require-dev": {

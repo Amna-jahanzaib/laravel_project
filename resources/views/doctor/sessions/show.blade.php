@@ -14,7 +14,7 @@
                 <div class="col-12">
                   <h4>
                     <i class="fas fa-wheelchair"></i> Session Details
-                    <small class="float-right">Date: 2/10/2014</small>
+                    <small class="float-right">Date: {{$session->created_at->format('d/M/Y')}}</small>
                   </h4>
                 </div>
                 <!-- /.col -->
@@ -26,7 +26,6 @@
 
                 <!-- /.col -->
                 <div class="col-12">
-                  @if(!empty($session->sessionTreatments))
                   <div class="table-responsive">
                     <table class="table">
                     <tr>
@@ -60,6 +59,7 @@
                             {{ $session->patient->name ?? '' }}
                         </td>
                     </tr>
+                    @if(!empty($session->sessionTreatments))
                     <tr>
                         <th>Problem Diagnosed:</th>
                         <td>{{$session->sessionTreatments->problem_diagnosed}}</td>
@@ -88,9 +88,10 @@
                         {{ \Carbon\Carbon::parse( $session->start_date.$session->start_time )->toDayDateTimeString()}}
                         </td>
                       </tr>
+                      @endif
+
     </table>
                  </div>
-                 @endif
                 </div>
                 <!-- /.col -->
               </div>
@@ -99,10 +100,7 @@
               <!-- this row will not appear when printing -->
               <div class="row no-print">
                 <div class="col-12">
-                @if(empty($session->sessionTreatments))
-
-                <button type="button" onclick="location.reload();location.href=''" class="btn  btn-info">Create Record</button>
-                  @endif<button type="button" class="btn btn-success float-right" onclick="location.reload();location.href='{{route('doctor.sessions.index')}}'">
+              <button type="button" class="btn btn-success float-right" onclick="location.reload();location.href='{{url()->previous()}}'">
                     Back
 
                   </button>

@@ -58,6 +58,22 @@
           <!-- /.col -->
           <div class="col-md-9">
             <div class="card">
+            @if (\Session::has('success'))
+                    <div class="alert alert-success">
+        
+                      <li>{!! \Session::get('success') !!}</li>
+        
+                    </div>
+                @endif
+                
+                @if (\Session::has('error'))
+                    <div class="alert alert-danger">
+        
+                      <span>{!! \Session::get('error') !!}</span>
+        
+                    </div>
+                @endif
+
               <div class="card-body">
                 <div class="tab-content">
 
@@ -68,6 +84,7 @@
                       <div class="user-block">
 
                         <h3>Session Details</h3>
+                        
                         </span>
                       </div>
                       <div class="row">

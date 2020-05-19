@@ -468,7 +468,7 @@
                     <!-- textarea -->
                     <div class="form-group">
                       <label>Hospital Address</label>
-                      <input class="form-control" name="hospital_address" rows="3" placeholder="Address">
+                      <input class="form-control {{ $errors->has('hospital_address') ? 'is-invalid' : '' }}" name="hospital_address" rows="3" placeholder="Address" required>
                     </div>
                   </div>
                 </div>
@@ -478,7 +478,7 @@
                     <!-- textarea -->
                     <div class="form-group">
                       <label>Upload Documents (Education and Experience Certificates)</label>
-                      <div class="needsclick dropzone {{ $errors->has('documents') ? 'is-invalid' : '' }}" name="documents" id="documents-dropzone">
+                      <div class="needsclick dropzone {{ $errors->has('documents') ? 'is-invalid' : '' }}" name="documents" id="documents-dropzone" required>
                 </div>
                 @if($errors->has('documents'))
                     <div class="invalid-feedback">

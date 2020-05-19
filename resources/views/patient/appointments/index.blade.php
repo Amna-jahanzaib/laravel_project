@@ -93,7 +93,7 @@
                                     </a>
                                 @endcan
                                 @can('session_create')
-                                @if( $appointment->status!=2 && $appointment->status!=0 && $appointment->type==1)
+                                @if( $appointment->status!=2 && $appointment->status!=0 && $appointment->status==6)
                                 <a href="{{ route('patient.sessions.create', $appointment->id) }}" class="btn btn-info btn-xs" >Create Session</a>
                                 @endif
                                 @endcan

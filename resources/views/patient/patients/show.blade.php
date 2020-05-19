@@ -235,7 +235,11 @@
                       <tr>
                         <th>Next Session Date and Time:</th>
                         <td>
-                        {{ \Carbon\Carbon::parse( $session->start_date.$session->start_time )->toDayDateTimeString()}}
+                        @if(!empty($session->next_session_date))
+                          {{ \Carbon\Carbon::parse( $session->next_session_date.$session->next_session_time )->toDayDateTimeString() }}
+                        @else
+                        Appointment Completed
+                        @endif
                         </td>
                       </tr>
     </table>

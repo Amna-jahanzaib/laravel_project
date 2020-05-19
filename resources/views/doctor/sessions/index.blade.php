@@ -15,7 +15,7 @@
 
                         </th>
                         <th>
-                            Appointment
+                        Session
                         </th>
                         <th>
                         Patient
@@ -43,7 +43,7 @@
 
                             </td>
                             <td>
-                            <a href="{{ route('doctor.appointments.show', $session->appointment->id) }}">AP_{{ $session->appointment->id ?? '' }}</a>                  
+                            <a href="{{ route('doctor.sessions.show', $session->id) }}">Session_{{ $session->id ?? '' }}</a>                  
                             </td>
                             <td>
                             <a class="users-list-name" href="{{ route('doctor.patients.show', $session->patient->id) }}">{{ $session->patient->name ?? '' }}</a>
@@ -82,7 +82,6 @@
                                     </a>
                                 @endcan
                                 @endif
-
                                
                             </td>
 

@@ -62,6 +62,15 @@
           <div class="col-md-9">
             <div class="card">
               <div class="card-body">
+              
+                @if (\Session::has('error'))
+                    <div class="alert alert-danger">
+        
+                      <span>{!! \Session::get('error') !!}</span>
+        
+                    </div>
+                @endif
+
                 <div class="tab-content">
 
                   <!-- /.tab-pane -->
@@ -86,7 +95,7 @@
                     <!-- text input -->
                     <div class="form-group">
                       <label>Session No <span class="text-danger">*</span></label>
-                      <select class="form-control select2 {{ $errors->has('session') ? 'is-invalid' : '' }}" name="session_id" id="session_id" required>
+                      <select class="form-control  {{ $errors->has('session') ? 'is-invalid' : '' }}" name="session_id" id="session_id" required>
                         <option value="{{ $session->id }}" }}>{{ $session->id }}</option>
                 </select>
                 @if($errors->has('session'))
@@ -142,32 +151,38 @@
                   </div>
                 </div>
                 <div class="row">
+                <p>Please leave blank next session info if no further sessions required</p>
+
                   <div class="col-sm-6">
+
                     <!-- textarea -->
                     <div class="form-group">
                       <label>Next Session Date:</label>
-                      <div class="input-group">
+                        <div class="input-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text">
                             <i class="far fa-calendar-alt"></i>
                           </span>
                         </div>
-                        <input class="form-control date {{ $errors->has('next_session_date') ? 'is-invalid' : '' }}" type="text" name="next_session_date" id="start_date" value="{{ old('next_session_date') }}" required>
+                        <input class="form-control date {{ $errors->has('next_session_date') ? 'is-invalid' : '' }}" type="text" name="next_session_date" id="start_date" value="{{ old('next_session_date') }}" >
                       </div>
                     </div>
                   </div>
+
                   <div class="col-sm-6">
                     <!-- textarea -->
                     <div class="form-group">
                       <label>Next Session Time:</label>
                       <div class="input-group date" id="timepicker" data-target-input="nearest">
-                      <input class="form-control timepicker {{ $errors->has('next_session_time') ? 'is-invalid' : '' }}" type="text" name="next_session_time" id="start_time" value="{{ old('next_session_time') }}" required>
+                      <input class="form-control timepicker {{ $errors->has('next_session_time') ? 'is-invalid' : '' }}" type="text" name="next_session_time" id="start_time" value="{{ old('next_session_time') }}" >
                       <div class="input-group-append" data-target="#timepicker" data-toggle="datetimepicker">
                           <div class="input-group-text"><i class="far fa-clock"></i></div>
                       </div>
                       </div>
                     </div>
+
                   </div>
+
                 </div>
 
                 <!-- /.card-body -->

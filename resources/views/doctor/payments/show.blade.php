@@ -28,7 +28,7 @@
                             <p class="mb-1">{{ $payment->patient->name ?? '' }} {{ $payment->patient->father_name ?? '' }}, {{ $payment->patient->phone ?? '' }}</p>
                             <p>Address:{{ $payment->patient->address ?? '' }}</p>
                             <p class="mb-1">{{ $payment->patient->city ?? '' }}, {{ $payment->patient->country ?? '' }}</p>
-                            <p class="mb-1">Email:{{ $payment->patient->user->emai ?? '' }}</p>
+                            <p class="mb-1">Email: {{ $payment->patient->user->email ?? '' }}</p>
                         </div>
 
                         <div class="col-md-6 text-right">
@@ -54,9 +54,6 @@
                             {{ trans('cruds.payment.fields.doctor') }}
                         </th>
                         <th class="border-0 text-uppercase small font-weight-bold">
-                            {{ trans('cruds.payment.fields.appointment') }}
-                        </th>
-                        <th class="border-0 text-uppercase small font-weight-bold">
                             Session
                         </th>
                         <th class="border-0 text-uppercase small font-weight-bold">
@@ -76,10 +73,8 @@
                                         <td>
                                          {{ $payment->doctor->first_name ?? '' }}
                                         </td>
-                                        <td>
-                                        {{ $payment->appointment->id ?? '' }}
-                                        </td>
-                                        <td>21</td>
+                                        
+                                        <td>{{ $payment->session_id ?? '' }}</td>
                                         <td>
                                         {{ $payment->type ?? '' }}
                                         </td>

@@ -34,6 +34,7 @@ class Appointment extends Model
         '3' => 'Ready',
         '4' => 'In-Progress',
         '5' => 'Completed',
+        '6' => 'Halted',
     ];
 
     protected $fillable = [

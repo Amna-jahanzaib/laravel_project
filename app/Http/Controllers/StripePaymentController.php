@@ -13,6 +13,8 @@ use App\Payment;
 use Stripe\Customer;
 use Stripe\Charge;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\PaymentNotification;
 
    
 class StripePaymentController extends Controller
@@ -30,6 +32,10 @@ class StripePaymentController extends Controller
         return view('patient.stripe',compact('appointment'));
 
     }
+    public function index()
+    {
+        return view('wallet.index');
+    }
     public function stripe2(Session $session)
 
     {
@@ -41,6 +47,28 @@ class StripePaymentController extends Controller
     public function stripe1()
     {
         return view('stripe1');
+    }
+    public function refund(Session $session)
+    {
+
+        $payment=Payment::where('session_id',$session->id)->first();
+        $charge_id =  $payment->charge_id;
+        $amount = 1333;       
+        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        $re = \Stripe\Refund::create(array(
+        "charge" =>$charge_id
+        ));
+        if($re['status'] == 'succeeded') {
+            $session->status=7;
+            $session->appointment->status=6;
+            $session->appointment->save();
+            $session->save();
+            
+            return redirect()->route('patient.dashboard')->with('message', 'Refund Successfull! Refunds take 5-10 days to appear on a customer statement.');
+
+        }
+
+        return redirect()->route('patient.dashboard')->with('error', 'Refund not Successfull!');
     }
   
     /**
@@ -68,14 +96,17 @@ class StripePaymentController extends Controller
 
 
         $payment = new Payment();
-        $payment->appointment_id = $session->appointment->id;
+        $payment->session_id = $session->id;
         $payment->patient_id = $session->patient_id;
         $payment->doctor_id = $session->doctor_id;
-        $payment->type = $session->type;
+        $payment->type = "card";
         $payment->payment_amount = 13;
+        $payment->charge_id = $charge['id'];
         $payment->save();
         $session->status=3;
         $session->save();
+        Mail::to($session->patient->user->email)->send(new PaymentNotification($payment));
+
         return redirect()->route('patient.dashboard')->with('message', 'Payment Successfull!');
         }
         else{

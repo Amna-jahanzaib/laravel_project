@@ -74,7 +74,7 @@ class PaymentsController extends Controller
     {
         abort_if(Gate::denies('payment_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $payment->load('doctor', 'patient', 'appointment');
+        $payment->load('doctor', 'patient');
 
         return view('doctor.payments.show', compact('payment'));
     }

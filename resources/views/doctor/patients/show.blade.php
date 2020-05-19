@@ -201,16 +201,23 @@
 
                 <!-- /.col -->
                 <div class="col-12">
-                @foreach($sessions as $key => $session)
-                  @if(!empty($session->sessionTreatments))
                   <div class="table-responsive">
                     <table class="table">
-                      <tr>
+                    @foreach($sessions as $key => $session)
+                       <tr>
                         <th style="width:50%">Session No:</th>
                         <td>
                         {{$session->id}}
                         </td>
                       </tr>
+                      <tr>
+                        <th>Session Date and Time:</th>
+                        <td>
+                        {{ \Carbon\Carbon::parse($session->time )->toDayDateTimeString()}}
+                        </td>
+                      </tr>
+                      @if(!empty($session->sessionTreatments))
+
                       <tr>
                         <th>Problem Diagnosed:</th>
                         <td>{{$session->sessionTreatments->problem_diagnosed}}</td>
@@ -227,22 +234,22 @@
                         <th>Improvements:</th>
                         <td>{{$session->sessionTreatments->improvements}}</td>
                       </tr>
-                      <tr>
-                        <th>Session Date and Time:</th>
-                        <td>
-                        {{ \Carbon\Carbon::parse( $session->sessionTreatments->next_session_date.$session->sessionTreatments->next_session_time )->toDayDateTimeString()}}
-                        </td>
-                      </tr>
+                      
                       <tr>
                         <th>Next Session Date and Time:</th>
                         <td>
-                        {{ \Carbon\Carbon::parse( $session->start_date.$session->start_time )->toDayDateTimeString()}}
+                        @if(!empty($session->next_session_date))
+                          {{ \Carbon\Carbon::parse( $session->next_session_date.$session->next_session_time )->toDayDateTimeString() }}
+                        @else
+                        Appointment Completed
+                        @endif
                         </td>
                       </tr>
+                      @endif
+                      @endforeach
+
     </table>
                  </div>
-                 @endif
-                 @endforeach
                 </div>
                 <!-- /.col -->
               </div>

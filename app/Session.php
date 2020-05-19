@@ -31,6 +31,8 @@ class Session extends Model
         '3' => 'Ready',
         '4' => 'In Progress',
         '5' => 'Completed',
+        '6' => 'Expired',
+        '7' => 'Refunded',
     ];
 
     protected $fillable = [
@@ -68,6 +70,11 @@ class Session extends Model
     public function sessionTreatments()
     {
         return $this->hasOne(Treatment_Record::class, 'session_id', 'id');
+
+    }
+    public function session_payment()
+    {
+        return $this->hasOne(Payment::class, 'session_id', 'id');
 
     }
 }
