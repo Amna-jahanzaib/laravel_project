@@ -56,9 +56,12 @@ Route::get('/', function () {
     Route::post('/make-payment', 'PaymentsController@pay');
     Route::get('payment/{session}', 'StripePaymentController@stripe2')->name('payment');
     Route::get('payout', 'StripePaymentController@index')->name('withdraw');
+    Route::post('payout', 'StripePaymentController@transfer')->name('transfer');
     Route::get('refund/{session}', 'StripePaymentController@refund')->name('refund');
     Route::post('stripe/{session}', 'StripePaymentController@stripePost')->name('stripe.post');
     Route::post('/doctors/search', 'FrontController@search')->name("search");
+    Route::get('view_doctor_profile/{doctor}','FrontController@view_doctor_profile')->name('patient.view_doctor_profile');
+    
 
     Route::get('/send/email', 'HomeController@mail');
 
@@ -255,7 +258,4 @@ Route::get('/doctor_dashboard',[
     Route::post('/home2', [
         'uses' => 'DoctorController@store'
     ]);
-    Route::get('/view_doctor_profile',[
-        'uses'=>'HomeController@view_doctor_profile',
-        'as'=>'patient.view_doctor_profile'
-    ]);
+    

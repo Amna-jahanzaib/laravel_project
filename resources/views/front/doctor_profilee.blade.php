@@ -46,16 +46,16 @@
     <p class="text-muted text-center">{{ $doctor->qualification ?? '' }}</p>
 
     <ul class="list-group list-group-unbordered mb-3">
-      <li class="list-group-item">
-        <b>Experience</b> <a class="float-right">{{ $doctor->experience ?? '' }}</a>
-      </li>
-      <li class="list-group-item">
-        <b>City</b> <a class="float-right">{{ $doctor->city ?? '' }}</a>
-      </li>
-      <li class="list-group-item">
-        <b>Fee</b> <a class="float-right">Rs. 200</a>
-      </li>
-    </ul>
+                  <li class="list-group-item">
+                    <b>Age</b> <a class="float-right">{{\Carbon\Carbon::parse($doctor->date_of_birth)->age}} </a>
+                  </li>
+                  <li class="list-group-item">
+                    <b>City</b> <a class="float-right">{{ $doctor->city }}</a>
+                  </li>
+                  <li class="list-group-item">
+                    <b>Fee</b> <a class="float-right">Rs. 2000</a>
+                  </li>
+                </ul>
     <div style="text-align: center">
                     <a href="{{ route('patient.book_appointment', $doctor->id) }}"  class="btn  btn-primary center">Book Appointment</a>
                     <!--<a href="" class="btn btn-sm btn-primary">online session</a>-->
@@ -75,59 +75,60 @@
   </div>
   <!-- /.card-header -->
   <div class="card-body">
-    <strong><i class="fas fa-book mr-1"></i> Education</strong>
+                <strong><i class="fas fa-book mr-1"></i> Qualification</strong>
 
-    <p class="text-muted">
-    {{$doctor->short_biography}}
-    </p>
+                <p class="text-muted">
+                {{ $doctor->qualification }}
+                </p>
 
-    <hr>
+                <hr>
 
-    <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
+                <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
 
-    <p class="text-muted">{{$doctor->adress}}, {{$doctor->city}}, {{$doctor->country}}</p>
+                <p class="text-muted">{{ $doctor->address }}</p>
 
-    <hr>
+                <hr>
 
-    <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
+                <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
 
-    <p class="text-muted">
-      <span class="tag tag-danger">OPD</span>
-      <span class="tag tag-success">IPD</span>
-      <span class="tag tag-info">Therapy</span>
-      <span class="tag tag-warning">Education</span>
-    </p>
+                <p class="text-muted">
+                {{ $doctor->skills }}
+                </p>
 
-    <hr>
+                <hr>
 
-    <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
+                <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
 
-    <p class="text-muted">SPINAL FELLOWSHIP Dr. John Adam, Allegimeines Krakenhaus, Schwerin, Germany.
-      .</p>
-  </div>
+                <p class="text-muted">{{ $doctor->notes }}
+                  .</p>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Availabilty</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <strong><i class="fas fa-book mr-1"></i> Week Days</strong>
+
+                <p class="text-muted">
+                @foreach($doctor->days as $key => $day)
+                  {{ App\Doctor::DAYS_SELECT[$day]}},
+                @endforeach
+                </p>
+
+                <hr>
+
+                <strong><i class="fas fa-map-marker-alt mr-1"></i> Timing</strong>
+
+                <p class="text-muted">{{\Carbon\Carbon::parse($doctor->start_timing)->format('H:i a')}} to {{\Carbon\Carbon::parse($doctor->finish_timing)->format('H:i a.')}}</p>
+
+              </div>
+
+            </div>
   <!-- /.card-body -->
-</div>
-<div class="card card-primary">
-  <div class="card-header">
-    <h3 class="card-title">Availabilty</h3>
-  </div>
-  <!-- /.card-header -->
-  <div class="card-body">
-    <strong><i class="fas fa-book mr-1"></i> Week Days</strong>
 
-    <p class="text-muted">
-    {{$doctor->days}}
-    </p>
-
-    <hr>
-
-    <strong><i class="fas fa-map-marker-alt mr-1"></i> Timing</strong>
-
-    <p class="text-muted">{{$doctor->hospital_timing}}</p>
-
-  </div>
-  <!-- /.card-body -->
-</div>
 <!-- /.card -->
 </div>
 <!-- /.col -->          <!-- /.col -->
@@ -156,7 +157,7 @@
                           <div class="info-box bg-light">
                             <div class="info-box-content">
                               <span class="info-box-text text-center text-muted">Full Name</span>
-                              <span class="info-box-number text-center text-muted mb-0">Ahsan Ahmed</span>
+                              <span class="info-box-number text-center text-muted mb-0">{{ $doctor->username }}</span>
                             </div>
                           </div>
                         </div>
@@ -164,7 +165,7 @@
                           <div class="info-box bg-light">
                             <div class="info-box-content">
                               <span class="info-box-text text-center text-muted">Mobile</span>
-                              <span class="info-box-number text-center text-muted mb-0">03454377564</span>
+                              <span class="info-box-number text-center text-muted mb-0">{{ $doctor->phone }}</span>
                             </div>
                           </div>
                         </div>
@@ -173,7 +174,7 @@
                             <div class="info-box-content">
                               <span class="info-box-text text-center text-muted">Email<span>
 
-                                  <span class="info-box-number text-center text-muted mb-0">ahsanahmed28@gmail.com</span>
+                                  <span class="info-box-number text-center text-muted mb-0">{{ $doctor->user->email }}</span>
                             </div>
                           </div>
                         </div>
@@ -182,24 +183,9 @@
                         <div class="col-12">
                           <div class="post">
                             <!-- /.user-block -->
+                            <h5>Biography</h5>
                             <p>
-                              Completed my graduation in Gynaecologist Medicine from the well known and renowned
-                              institution of <br />
-                              India – SARDAR PATEL MEDICAL COLLEGE, BARODA in 2000-01, which was affiliated to M.S.
-                              University.</p>
-                            <p>I ranker in University exams from the same university from 1996-01.<br />Worked as
-                              Professor and Head of the department ;
-                              Community medicine Department at Sterline Hospital, Rajkot, Gujarat from 2003-2015
-
-                              And I was lucky to train in a collegial environment where we called most of our
-                              attendings by their first names.</p>
-                            <p> If only doctors did it that way outside the Midwest. One of my attendings even made the
-                              argument that it is safer for patient care because it’s easier for subordinates to raise
-                              concerns when they’re not verbally kowtowing to their superior. I never respected a
-                              white-haired surgeon any less when I addressed him by his first name. In fact, I saw that
-                              in non-clinical science, it is commonplace for the most junior researchers to call the
-                              most celebrated senior scientists by their first names. </p>
-
+                            {{ $doctor->short_biography }}</p>
                           </div>
 
                           <div class="post clearfix">
@@ -207,41 +193,39 @@
                             <h5>Education</h5>
 
                             <p>
-                              M.B.B.S.,Gujarat University, Ahmedabad,India.<br />
-                              M.S.,Gujarat University, Ahmedabad, India.<br />
-                              SPINAL FELLOWSHIP Dr. John Adam, Allegimeines Krakenhaus, Schwerin, Germany.<br />
-                              Fellowship in Endoscopic Spine Surgery Phoenix, USA.<br />
+                            {{ $doctor->education }}
                             </p>
                           </div>
 
                           <div class="post">
-                          </div>
-                        </div>
-                      </div>
-                      <h5>Experience
-                      </h5>
+                          <h5>Experience</h5>
                       <!-- /.user-block -->
                       <p>
-                        One year rotatory internship from April-2009 to march-2010 at B. J. Medical College, Ahmedabad.
-                      </p>
-                      <p>
-                        Three year residency at V.S. General Hospital as a resident in orthopedics from April - 2008 to
-                        April - 2011.
-                      </p>
-                      <p>
-                        I have worked as a part time physiotherapist in Apang manav mandal from 1st june 2004 to 31st
-                        jan 2005.
-                      </p>
-                      <p>
-                        Clinical and Research fellowship in Scoliosis at Shaurashtra University and Medical Centre
-                        (KUMC) , Krishna Hospital , Rajkot from April 2013 to June 2013.
-                      </p>
-                      <p>
-                        2.5 Years Worked at Mahatma Gandhi General Hospital, Surendranagar.
-                      </p>
-                    </div>
-                  </div>
-            </div>
+                      {{ $doctor->experience }} </p>
+                          </div>
+                          <div class="post">
+                          <h5 >Hospital Availabilty</h5>
+                      <!-- /.user-block -->
+                      
+                          </div>
+
+                <strong><i class="fas fa-book mr-1"></i>Hospital Days</strong>
+
+                <p class="text-muted">
+                @foreach($doctor->hospital_days as $key => $day)
+                  {{ App\Doctor::DAYS_SELECT[$day]}},
+                @endforeach
+                </p>
+
+
+                <strong><i class="fas fa-map-marker-alt mr-1"></i>Hospital Timing</strong>
+
+                <p class="text-muted">{{\Carbon\Carbon::parse($doctor->hospital_start_timing)->format('H:i a')}} to {{\Carbon\Carbon::parse($doctor->hospital_finish_timing)->format('H:i a.')}}</p>
+
+              </div>              
+ 
+      </div>
+ </div>
             <!--   
            
         -->

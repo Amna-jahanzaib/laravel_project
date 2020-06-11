@@ -19,6 +19,7 @@
 
                   <div class="form-group">
                         <select class="form-control" name="city">
+                        ` <option value="">Any</option>
                           <option value="lahore">Lahore</option>
                           <option value="islamabad">Islamabad</option>
                           <option value="rawalpindi">Rawalpindi</option>

@@ -100,12 +100,12 @@ class FrontController extends Controller
         where(function($query) use ($name,$city) {
             $query->where('first_name', 'LIKE', '%'.$name.'%')
             ->where('is_registered', '=', 1)
-            ->where('city', $city);
+            ->where('city', 'like', '%' . $city . '%');
         })
         ->orWhere(function($query) use ($name,$city) {
             $query->where('last_name', 'LIKE', '%'.$name.'%')
                   ->where('is_registered', '=', 1)
-                  ->where('city', $city);
+                  ->where('city', 'like', '%' . $city . '%');
                 })
         ->get();
 
@@ -122,11 +122,11 @@ class FrontController extends Controller
     {
         return view('front.register_patient');
     }
-    public function view_doctor_profile($id)
+    public function view_doctor_profile(Doctor $doctor)
     {
-        $doctor=Doctor::where('id',$id)->first();
 
         return view('front.doctor_profilee', compact('doctor'));
+
     }
     public function bookAppointment($id)
     {

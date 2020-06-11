@@ -145,14 +145,14 @@
                   @endif
                 </div>
 
-                <h3 class="profile-username text-center"><a class="users-list-name" href="{{ route('patient.view_doctor_profile', $doctor->id) }}">{{ $doctor->first_name ?? '' }} {{ $doctor->last_name ?? '' }} </a>
+                <h3 class="profile-username text-center"><a class="users-list-name text-center" href="{{ route('patient.view_doctor_profile', $doctor->id) }}">{{ $doctor->first_name ?? '' }} {{ $doctor->last_name ?? '' }} </a>
 </h3>
 
                 <p class="text-muted text-center">{{ $doctor->qualification ?? '' }}</p>
 
                 <ul class="list-group list-group-unbordered mb-3">
                   <li class="list-group-item">
-                    <b>Experience</b> <a class="float-right">{{ $doctor->experience ?? '' }}</a>
+                  <b>Age</b> <a class="float-right">{{ $doctor->getAge() ?? '' }}</a>
                   </li>
                   <li class="list-group-item">
                     <b>City</b> <a class="float-right">{{ $doctor->city ?? '' }}</a>
